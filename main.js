@@ -19,7 +19,8 @@ function parseCSVrows(s) {
     }
     return data
     }
-let x = parseCSVrows(str); 
+let x = parseCSVrows(str);
+// console.log(x)
 // console.log(x);
 
 // Part 4 sorting and manipulating data 
@@ -37,5 +38,25 @@ function part4(arr) {
     arr.push(newRow2);
     return arr
 }
-console.log(part4(x))
-
+const part4asVar = part4(x);
+// console.log(part4asVar)
+function revertToCSV(data) {
+    const headers = Object.keys(data[0]); 
+    const headerRow = headers.join(',');
+    // console.log(headers)
+    // console.log(headerRow)
+    // console.log(data)
+    // transform each obj in the array into an individual array that is just the values
+    const dataRows = data.map(row => headers.map(key => row[key]).join(',')).join('\n')
+    // const dataRows = data.reduce(function(accumulator, currentValur) {
+    return headerRow + '\n' + dataRows    
+    // return dataRows
+    // })
+    // const dataRows = data.map(row => headers.map(key => row[key]).join(',')).join('\n');
+    // return headerRow + '\n' + dataRows
+}
+// const csv = revertToCSV(part4asVar);
+// revertToCSV(part4asVar)
+console.log(revertToCSV(part4asVar));
+console.log(part4asVar)
+// console.log(part4(x))
